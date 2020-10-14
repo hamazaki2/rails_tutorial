@@ -1,0 +1,41 @@
+<h1>記事詳細</h1>
+
+  <p>
+  タイトル：<%= @blog.title %>
+  </p>
+  <p>
+  コンテンツ：<%= @blog.content %>
+  </p>
+
+<div>
+    <%= link_to "戻る", blogs_path %>
+</div>
+
+<div class="comment-wrapper border-top　mb-10">
+ <p class="mt-5">コメント一覧</p>
+  <% if logged_in? %>
+   <% @comments.each do |c| %>
+    <div>
+     <%= c.user.name unless c.user.blank? %>
+     <br>
+     <%= c.content %>
+    </div>
+    <br>
+   <% end %>
+   <%= form_with(model: [@blog, @comment], local: true) do |f| %>
+    <%= f.text_area :content, class: "form-control", rows: 5 %>
+    <%= button_tag type: "submit", class: "btn btn-success" do %>
+     コメントする
+    <% end %>
+   <% end %>
+  <% else %>
+   <% @comments.each do |c| %>
+    <div>
+     <%= c.user.name unless c.user.blank? %>
+     <br>
+     <%= c.content %>
+    </div>
+     <br>
+   <% end %>
+  <% end %>
+</div>

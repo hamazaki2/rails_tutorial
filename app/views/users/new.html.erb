@@ -1,0 +1,27 @@
+<h1>新規会員登録</h1>
+
+  <%= form_for(@user) do |f| %>
+   <%= render 'layouts/error_messages', model: f.object %>
+   <p>
+     <%= f.label :name,"氏名" %>
+     <%= f.text_field :name %>
+   </p>
+   <p>
+     <%= f.label :email,"メールアドレス" %>
+     <%= f.text_field :email %>
+   </p>
+   <p>
+     <%= f.label :password_digest,"パスワード" %>
+     <%= f.password_field :password %>
+   </p>
+   <p>
+     <%= f.label :password_confirmation, "パスワード確認" %>
+     <%= f.password_field :password_confirmation %>
+   </p>
+   <p>
+     <%= f.submit "登録" %>
+   </p>
+  <% end %>
+<div>
+    <%= link_to "戻る", blogs_path %>
+</div>
