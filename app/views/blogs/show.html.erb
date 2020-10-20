@@ -18,7 +18,7 @@
     <div>
      コメント投稿者 : <%= c.user.name unless c.user.blank? %>
      <br>
-     コメント日時：<%= c.created_at %>
+     コメント日時：<%= l c.created_at %>
      <%= button_to "削除", blog_comment_path(:blog_id => c.blog_id, :comment_id => c.id), method: :delete %>
      <br>
      <%= c.content %>
@@ -36,7 +36,7 @@
     <div>
     コメント投稿者 : <%= c.user.name unless c.user.blank? %>
      <br>
-     コメント日時：<%= c.content %>
+     コメント日時：<%= l c.content %>
     </div>
    <% end %>
   <% end %>

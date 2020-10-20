@@ -20,9 +20,8 @@ class BlogsController < ApplicationController
 
   def show
    @blog = Blog.find(params[:id])
-   @comments = @blog.comments
-   @comment = @blog.comments.build
-   binding.pry
+   @comments = Comment.where(blog_id: params[:id])
+   @comment = @comments.build
   end
 
   def edit
