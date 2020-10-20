@@ -1,6 +1,7 @@
 <h1>ブログ修正画面</h1>
 
   <%= form_for(@blog) do |f| %>
+    <%= render 'layouts/error_messages', model: f.object %>
     <p>
     <%= f.label :title,"タイトル" %>
     <%= f.text_field :title %>
