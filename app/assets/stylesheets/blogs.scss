@@ -1,3 +1,73 @@
 // Place all the styles related to the Blogs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+h1 {
+    text-align: center;
+}
+  
+table {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.blogtable {
+    border-collapse:collapse;
+    border-spacing: 0px; 
+    border: 1px solid #000000;
+}
+
+.blogtable tr td:nth-child(1) {
+    width: 500px;
+    height: 50px;
+}
+
+.blogtable tr td:nth-child(2) {
+    width: 100px;
+    height: 50px;
+    text-align: center;
+}
+
+.blogtable tr td:nth-child(3) {
+    width: 100px;
+    height: 50px;
+    text-align: center;
+}
+
+.blogtable tr th {
+    border: 1px solid #000000;
+}
+
+.blogtable tr td {
+    border: 1px solid #000000;
+}
+
+.blog_edit {
+     input[type="text"] {
+        width: 500px;
+    }
+}
+
+.blog_edit {
+    textarea {
+        width: 1000px;
+        height: 200px;
+    }
+}
+
+.blog_new {
+    input[type="text"] {
+       width: 500px;
+   }
+}
+
+.blog_new {
+   textarea {
+       width: 1000px;
+       height: 200px;
+   }
+}
+.blog_show_title {
+    font-size: 32px;
+    font-weight: 700;
+    text-align: center;
+}

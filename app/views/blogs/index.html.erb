@@ -1,26 +1,26 @@
-<h1>ブログ一覧表</h1>
+<h1>ブログ一覧</h1>
  <% if logged_in? %>
-<div>
-    <%= link_to "新規投稿画面", new_blog_path, class: "btn btn-default" %>
-</div>
-<% end %>
+  <div>
+   <%= link_to "新規投稿画面", new_blog_path, class: "btn btn-default" %>
+  </div>
+ <% end %>
 
-<table border="1">
-    <tr>
-        <th>タイトル</th>
-        <% if logged_in? %>
-         <th>編集リンク</th>
-　　　 　<th>削除リンク</th>
-        <% end %>
-    </tr>
+<table class = "blogtable">
+ <tr>
+  <th>タイトル</th>
+  <% if logged_in? %>
+   <th>編集リンク</th>
+   <th>削除リンク</th>
+  <% end %>
+ </tr>
 
-    <% @blogs.each do |blog| %>
-     <tr>
-        <td width="500" height="50"><%= link_to blog.title, blog_path(:id => blog.id) %></td>
-        <% if logged_in? %>
-         <td width="100" height="50" align="center"><%= link_to "編集", edit_blog_path(:id => blog.id), class: "btn btn-primary" %></td>
-         <td width="100" height="50" align="center"><%= link_to "削除", blog_path(:id => blog.id), method: :delete, class: "btn btn-danger", data: {confirm: "この記事を削除しますか？"} %></td>
-        <% end %>
-     </tr>
-    <% end %>
+ <% @blogs.each do |blog| %>
+  <tr>
+   <td><%= link_to blog.title, blog_path(:id => blog.id) %></td>
+   <% if logged_in? %>
+    <td><%= link_to "編集", edit_blog_path(:id => blog.id), class: "btn btn-primary" %></td>
+    <td><%= button_to "削除", blog_path(:id => blog.id), method: :delete, class: "btn btn-danger", data: {confirm: "この記事を削除しますか？"} %></td>
+   <% end %>
+  </tr>
+ <% end %>
 </table>
