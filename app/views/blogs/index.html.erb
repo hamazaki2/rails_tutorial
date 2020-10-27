@@ -1,3 +1,7 @@
+<% if flash[:success] %>
+  <p><%= flash[:success] %></p>
+<% end %>
+
 <h1>ブログ一覧</h1>
  <% if logged_in? %>
   <div>
@@ -8,6 +12,7 @@
 <table class = "blogtable">
  <tr>
   <th>タイトル</th>
+  <th>投稿日時</th>
   <% if logged_in? %>
    <th>編集リンク</th>
    <th>削除リンク</th>
@@ -17,6 +22,7 @@
  <% @blogs.each do |blog| %>
   <tr>
    <td><%= link_to blog.title, blog_path(:id => blog.id) %></td>
+   <td><%= l blog.created_at %></td>
    <% if logged_in? %>
     <td><%= link_to "編集", edit_blog_path(:id => blog.id), class: "btn btn-primary" %></td>
     <td><%= button_to "削除", blog_path(:id => blog.id), method: :delete, class: "btn btn-danger", data: {confirm: "この記事を削除しますか？"} %></td>
@@ -24,3 +30,6 @@
   </tr>
  <% end %>
 </table>
+<div class="pager">
+  <%= paginate @blogs %>
+</div>

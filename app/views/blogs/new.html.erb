@@ -1,3 +1,7 @@
+<% if flash[:danger] %>
+  <p><%= flash[:danger] %></p>
+<% end %>
+
 <h1>新規ブログ投稿</h1>
 
 <div class="container">
@@ -5,17 +9,7 @@
     <div class= "col-md-11 col-md-offset-1">
       <div class="blog_new">
         <%= form_for(@blog) do |f| %>
-          <%= render 'layouts/error_messages', model: f.object %>
-          <p>
-            <%= f.label :title,"タイトル" %>
-            <br>
-            <%= f.text_field :title %>
-          </p>
-          <p>
-            <%= f.label :content,"コンテンツ" %>
-            <br>
-            <%= f.text_area :content %>
-          </p>
+          <%= render 'blogs/form', f:f %>
           <p>
             <%= f.submit "登録", class: "btn btn-success" %>
             <%= link_to "一覧に戻る", blogs_path, class: "btn btn-default" %>

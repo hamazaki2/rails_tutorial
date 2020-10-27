@@ -1,6 +1,6 @@
 class BlogsController < ApplicationController
   def index
-   @blogs = Blog.all.order(created_at: "DESC")
+   @blogs = Blog.all.order(created_at: "DESC").page(params[:page]).per(20)
   end
 
   def new
@@ -11,15 +11,14 @@ class BlogsController < ApplicationController
    @blog = Blog.new(blog_params)
    if @blog.save
     redirect_to action: :show, id: @blog.id
-    flash[:success] = "記事の登録に成功しました"
+    flash[:success] = "記事の投稿に成功しました"
    else
-    flash[:danger] = "記事の登録に失敗しました"
+    flash[:danger] = "記事の投稿に失敗しました"
     render :new
    end
   end
 
   def show
-    binding.pry
    @blog = Blog.find(params[:id])
    @comments = Comment.where(blog_id: params[:id])
    @comment = @comments.build

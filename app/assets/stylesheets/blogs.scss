@@ -22,12 +22,17 @@ table {
 }
 
 .blogtable tr td:nth-child(2) {
+    width: 200px;
+    height: 50px;
+}
+
+.blogtable tr td:nth-child(3) {
     width: 100px;
     height: 50px;
     text-align: center;
 }
 
-.blogtable tr td:nth-child(3) {
+.blogtable tr td:nth-child(4) {
     width: 100px;
     height: 50px;
     text-align: center;
@@ -41,33 +46,21 @@ table {
     border: 1px solid #000000;
 }
 
-.blog_edit {
-     input[type="text"] {
-        width: 500px;
-    }
+input[type="text"] {
+    width: 500px;
 }
 
-.blog_edit {
-    textarea {
-        width: 1000px;
-        height: 200px;
-    }
+textarea {
+    width: 1000px;
+    height: 200px;
 }
 
-.blog_new {
-    input[type="text"] {
-       width: 500px;
-   }
-}
-
-.blog_new {
-   textarea {
-       width: 1000px;
-       height: 200px;
-   }
-}
 .blog_show_title {
     font-size: 32px;
     font-weight: 700;
+    text-align: center;
+}
+
+.pager {
     text-align: center;
 }

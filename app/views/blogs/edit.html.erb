@@ -1,3 +1,7 @@
+<% if flash[:danger] %>
+  <p><%= flash[:danger] %></p>
+<% end %>
+
 <h1>ブログ修正</h1>
 
 <div class="container">
@@ -5,19 +9,9 @@
       <div class= "col-md-11 col-md-offset-1">
         <div class="blog_edit">
           <%= form_for(@blog) do |f| %>
-            <%= render 'layouts/error_messages', model: f.object %>
+            <%= render 'blogs/form', f:f %>
             <p>
-              <%= f.label :title,"タイトル" %>
-              <br>
-              <%= f.text_field :title %>
-            </p>
-            <p>
-              <%= f.label :content,"内容" %>
-              <br>
-              <%= f.text_area :content %>
-            </p>
-            <p>
-              <%= f.submit "変更", class: "btn btn-default", data: {confirm: "この記事を削除しますか？"} %>
+              <%= f.submit "変更", class: "btn btn-default" %>
               <%= link_to "一覧に戻る", blogs_path, class: "btn btn-default" %>
             </p>
           <% end %>
