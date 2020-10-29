@@ -1,6 +1,10 @@
 class BlogsController < ApplicationController
   def index
-   @blogs = Blog.all.order(created_at: "DESC").page(params[:page]).per(20)
+    if params[:keyword].present? || params[:from].present? || params[:to].present?
+      @blogs = Blog.search_blogs(params[:keyword], params[:from], params[:to])
+    end
+    @blogs = Blog.all.order(created_at: "DESC") if @blogs.nil?
+    @pagy, @blogs = pagy(@blogs)
   end
 
   def new
@@ -44,8 +48,10 @@ class BlogsController < ApplicationController
    flash[:success] = "記事を削除しました"
    redirect_to blogs_path
   end
+  
 
    private
+
    def blog_params
     params.require(:blog).permit(:id,:title,:content)
    end

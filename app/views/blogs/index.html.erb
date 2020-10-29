@@ -9,6 +9,20 @@
   </div>
  <% end %>
 
+ <%= form_with url: blogs_path, method: :get, local: true do |form| %>
+
+  <%= form.text_field :keyword %>
+
+  <%= form.label :from %>
+  <%= form.date_field :from %>
+
+  <%= form.label :to %>
+  <%= form.date_field :to %>
+
+  <%= form.submit "検索", class: "btn btn-primary" %>
+
+<% end %>
+
 <table class = "blogtable">
  <tr>
   <th>タイトル</th>
@@ -29,7 +43,8 @@
    <% end %>
   </tr>
  <% end %>
+
 </table>
 <div class="pager">
-  <%= paginate @blogs %>
+<%== pagy_bootstrap_nav(@pagy) %>
 </div>
